@@ -40,6 +40,8 @@ const { title, description, image, url, type } = Astro.props;
     <!-- Hero background image preload (above-the-fold LCP candidate) -->
     <link rel="preload" as="image" href="/images/placeholders/wood-grain-pattern.svg" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Netlify Identity Widget (for CMS invite confirmation) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
@@ -50,5 +52,17 @@ const { title, description, image, url, type } = Astro.props;
 
     <Footer />
     <StickyWhatsApp />
+    <!-- Redirect to /admin after identity confirmation -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
