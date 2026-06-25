@@ -1,11 +1,31 @@
+---
+import WhatsAppCTA from './WhatsAppCTA.astro';
+import homepageData from '../data/homepage.json';
+
+const { heroHeadline, heroSubheadline, heroCTAText, heroCTAMessage } = homepageData;
+---
+
 <section class="relative text-white overflow-hidden">
-  <!-- Background image -->
+  <!-- Hero background image -->
   <div class="absolute inset-0">
-    <img src="/images/hero-bg.jpg" alt="" class="w-full h-full object-cover" />
-    <div class="absolute inset-0 bg-black/60"></div> <!-- dark overlay for text readability -->
+    <img src="/images/placeholders/hero-bg.jpg" alt="" class="w-full h-full object-cover" width="1920" height="1080" />
+    <div class="absolute inset-0 bg-black/60"></div>
   </div>
 
   <div class="relative max-w-7xl mx-auto px-4 py-16 sm:py-24 lg:py-32">
-    ...rest stays the same...
+    <div class="max-w-2xl">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-4">
+        {heroHeadline}
+      </h1>
+      <p class="text-base sm:text-lg text-stone-200 mb-8 max-w-xl leading-relaxed">
+        {heroSubheadline}
+      </p>
+      <WhatsAppCTA
+        message={heroCTAMessage}
+        label={heroCTAText}
+        variant="primary"
+        size="lg"
+      />
+    </div>
   </div>
 </section>
