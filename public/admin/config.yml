@@ -1,0 +1,93 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "categories"
+    label: "Product Categories"
+    folder: "src/content/categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category Slug", name: "categorySlug", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "string", pattern: [".{1,100}", "Must be 100 characters or fewer"] }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string", pattern: [".{5,125}", "Must be between 5 and 125 characters"] }
+      - { label: "Is Placeholder", name: "isPlaceholder", widget: "boolean", default: true }
+      - { label: "Customization Options", name: "customizationOptions", widget: "list" }
+      - { label: "Materials", name: "materials", widget: "list" }
+      - { label: "WhatsApp Message", name: "whatsappMessage", widget: "string" }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "gallery"
+    label: "Gallery Projects"
+    folder: "src/content/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "relation", collection: "categories", value_field: "categorySlug", search_fields: ["title"] }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string", pattern: [".{5,125}", "Must be between 5 and 125 characters"] }
+      - { label: "Is Placeholder", name: "isPlaceholder", widget: "boolean", default: true }
+      - { label: "Material Type", name: "materialType", widget: "string" }
+      - { label: "Dimensions", name: "dimensions", widget: "string" }
+      - { label: "Finish Type", name: "finishType", widget: "string" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "WhatsApp Message", name: "whatsappMessage", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "reviews"
+    label: "Customer Reviews"
+    folder: "src/content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Customer Name", name: "customerName", widget: "string" }
+      - { label: "Project Type", name: "projectType", widget: "string" }
+      - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5, value_type: "int", required: false }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+      - { label: "Source", name: "source", widget: "select", options: ["manual", "google"], default: "manual" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "materials"
+    label: "Materials"
+    folder: "src/content/materials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Budget Tier", name: "budgetTier", widget: "select", options: ["Budget", "Mid-Range", "Premium"] }
+      - { label: "Applicable Categories", name: "applicableCategories", widget: "list" }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "Is Placeholder", name: "isPlaceholder", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "site-data"
+    label: "Site Settings"
+    files:
+      - label: "FAQ"
+        name: "faq"
+        file: "src/data/faq.json"
+        fields:
+          - label: "FAQs"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+              - { label: "Topic", name: "topic", widget: "select", options: ["pricing", "materials", "timeline", "serviceArea", "payment", "warranty"] }
+      - label: "Homepage"
+        name: "homepage"
+        file: "src/data/homepage.json"
+        fields:
+          - { label: "Hero Headline", name: "heroHeadline", widget: "string" }
+          - { label: "Hero Subheadline", name: "heroSubheadline", widget: "string" }
+          - { label: "Hero CTA Text", name: "heroCTAText", widget: "string" }
+          - { label: "Hero CTA Message", name: "heroCTAMessage", widget: "string" }

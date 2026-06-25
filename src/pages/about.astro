@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import siteData from '../data/site.json';
+---
+
+<BaseLayout
+  title="About Us | Chary Woodworks Hyderabad"
+  description="Learn about Chary Woodworks — trusted carpentry experts in Hyderabad with 15+ years of experience in custom furniture and interiors."
+  url="/about"
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": siteData.businessName,
+      "description": "Custom woodworking, carpentry, and interior solutions in Hyderabad. Over 15 years of experience delivering quality craftsmanship for homes and offices.",
+      "url": "/about",
+      "telephone": siteData.phone,
+      "email": siteData.email,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kukatpally",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "postalCode": "500072",
+        "addressCountry": "IN"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Hyderabad, Telangana, India"
+      },
+      "sameAs": [siteData.googleBusinessProfileUrl]
+    })} />
+  </Fragment>
+
+  <!-- Page Header -->
+  <section class="bg-wood-50 py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-wood-800">
+        About {siteData.businessName}
+      </h1>
+      <p class="mt-4 text-lg text-stone-600">
+        Crafting quality woodwork for homes and businesses across Hyderabad
+      </p>
+    </div>
+  </section>
+
+  <!-- Years of Experience Indicator -->
+  <section class="py-10 md:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col items-center text-center mb-10">
+        <div class="bg-amber-700 text-white rounded-full w-28 h-28 flex flex-col items-center justify-center shadow-lg">
+          <span class="text-3xl font-bold font-heading">15+</span>
+          <span class="text-sm">Years</span>
+        </div>
+        <p class="mt-4 text-xl font-heading font-semibold text-wood-700">
+          Over 15 Years of Experience in Woodworking
+        </p>
+      </div>
+
+      <!-- Business Background Narrative -->
+      <div class="prose prose-stone max-w-none">
+        <h2 class="text-2xl font-heading font-bold text-wood-800 mb-4">Our Story</h2>
+        <p class="text-stone-700 leading-relaxed mb-4">
+          {siteData.businessName} was founded with a simple vision — to bring quality craftsmanship and honest service to homeowners and businesses in Hyderabad. What began as a small carpentry workshop has grown into a trusted name for custom furniture, interior woodwork, and complete contracting solutions across the city.
+        </p>
+        <p class="text-stone-700 leading-relaxed mb-4">
+          Over the past 15 years, we have completed hundreds of projects ranging from custom wardrobes and modular kitchens to full-home interior fit-outs and commercial office setups. Our journey has been defined by a commitment to precision, the use of quality materials, and a deep respect for our clients' vision and budget.
+        </p>
+        <p class="text-stone-700 leading-relaxed">
+          Today, we serve homeowners, interior designers, architects, and businesses across Hyderabad and surrounding areas. Every project — big or small — receives the same level of care, craftsmanship, and attention to detail that has earned us the trust of our community.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise List -->
+  <section class="bg-stone-50 py-10 md:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-heading font-bold text-wood-800 mb-6 text-center">
+        Our Areas of Expertise
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+          <span class="text-amber-700 text-xl mt-0.5">🪑</span>
+          <div>
+            <h3 class="font-semibold text-wood-800">Custom Furniture</h3>
+            <p class="text-sm text-stone-600">Beds, wardrobes, dining tables, TV units, and bespoke pieces designed to your specifications.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+          <span class="text-amber-700 text-xl mt-0.5">🏠</span>
+          <div>
+            <h3 class="font-semibold text-wood-800">Interior Woodwork</h3>
+            <p class="text-sm text-stone-600">Complete home and office interiors including wall paneling, false ceilings, and cabinetry.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+          <span class="text-amber-700 text-xl mt-0.5">🏢</span>
+          <div>
+            <h3 class="font-semibold text-wood-800">Commercial Projects</h3>
+            <p class="text-sm text-stone-600">Office furniture, retail displays, restaurant interiors, and large-scale contract work.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-stone-200">
+          <span class="text-amber-700 text-xl mt-0.5">🔧</span>
+          <div>
+            <h3 class="font-semibold text-wood-800">Repairs & Maintenance</h3>
+            <p class="text-sm text-stone-600">Door alignment, furniture repair, polishing, and all types of minor woodwork fixes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Philosophy Statement -->
+  <section class="py-10 md:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-heading font-bold text-wood-800 mb-4 text-center">
+        Our Philosophy
+      </h2>
+      <div class="bg-wood-50 border-l-4 border-amber-700 p-6 rounded-r-lg">
+        <p class="text-stone-700 leading-relaxed text-lg">
+          We believe that great woodwork is built on three pillars: honest communication, quality materials, and skilled craftsmanship. Every project starts with understanding your needs and budget — no hard selling, no unnecessary upselling. We source the best materials suited to your project, work with transparent timelines, and deliver results that last. Our goal is not just to complete a job, but to build a lasting relationship through trust and the quality of our work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Geographic Service Area -->
+  <section class="bg-stone-50 py-10 md:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-heading font-bold text-wood-800 mb-4 text-center">
+        Service Area
+      </h2>
+      <p class="text-stone-700 text-center mb-6">
+        We proudly serve customers across Hyderabad and surrounding areas.
+      </p>
+      <div class="bg-white rounded-lg p-6 shadow-sm border border-stone-200 text-center">
+        <p class="text-stone-700 font-medium mb-3">📍 {siteData.serviceArea}</p>
+        <p class="text-sm text-stone-500">
+          Including Kukatpally, Miyapur, Gachibowli, HITEC City, Madhapur, Kondapur, Jubilee Hills, Banjara Hills, Begumpet, Ameerpet, SR Nagar, and all areas within Greater Hyderabad.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp CTA -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl font-heading font-bold text-wood-800 mb-3">
+        Ready to Start Your Project?
+      </h2>
+      <p class="text-stone-600 mb-6">
+        We'd love to hear about your woodworking needs. Get in touch with us on WhatsApp.
+      </p>
+      <WhatsAppCTA
+        message="Hi, I visited your About page and would like to discuss a project."
+        label="Discuss Your Project"
+        variant="primary"
+        size="lg"
+      />
+    </div>
+  </section>
+</BaseLayout>

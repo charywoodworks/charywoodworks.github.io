@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ProcessStep from '../components/ProcessStep.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import { getCollection } from 'astro:content';
+import siteData from '../data/site.json';
+import processSteps from '../data/process-steps.json';
+
+// Get all categories sorted by order
+const categories = (await getCollection('categories')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+// Why Choose Us differentiators
+const differentiators = [
+  {
+    heading: "Custom-Built for Your Space",
+    text: "Every piece is designed to your exact measurements, style, and functional needs.",
+  },
+  {
+    heading: "Transparent Pricing",
+    text: "Detailed quotations with no hidden charges. Know exactly what you pay for.",
+  },
+  {
+    heading: "End-to-End Service",
+    text: "From design consultation to delivery and installation, we handle everything.",
+  },
+  {
+    heading: "Quality Materials",
+    text: "We use solid wood, premium plywood, and trusted hardware brands for durability.",
+  },
+];
+
+// LocalBusiness JSON-LD schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": siteData.businessName,
+  "description": "Custom woodworking, carpentry, and interior solutions in Hyderabad",
+  "url": "https://charywoodworks.github.io",
+  "telephone": siteData.phone,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "addressCountry": "IN",
+  },
+  "areaServed": "Hyderabad",
+  "sameAs": [siteData.googleBusinessProfileUrl],
+};
+---
+
+<BaseLayout
+  title="Custom Woodworking & Carpentry in Hyderabad | Chary Woodworks"
+  description="Quality custom woodworking, carpentry, and interior solutions in Hyderabad. Wardrobes, kitchens, beds, TV units, doors, and more. Get a free quote on WhatsApp."
+  url="/"
+>
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json" slot="schema" set:html={JSON.stringify(localBusinessSchema)} />
+
+  <!-- Hero Section -->
+  <HeroSection />
+
+  <!-- Services Overview Grid -->
+  <section class="py-12 sm:py-16 lg:py-20 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-stone-800">
+          Our Woodworking Services
+        </h2>
+        <p class="mt-2 text-stone-600 max-w-2xl mx-auto">
+          Explore our range of custom furniture and woodwork categories
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {categories.map((category) => (
+          <a
+            href={`/products/${category.slug}`}
+            class="group block bg-white rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+          >
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
+              <img
+                src={category.data.image}
+                alt={category.data.imageAlt}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-stone-800 group-hover:text-wood-600 transition-colors">
+                {category.data.title}
+              </h3>
+              <p class="mt-1 text-sm text-stone-600 line-clamp-2">
+                {category.data.shortDescription}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-12 sm:py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-stone-800">
+          How It Works
+        </h2>
+        <p class="mt-2 text-stone-600 max-w-2xl mx-auto">
+          Our streamlined process from enquiry to installation
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        {processSteps.map((step) => (
+          <ProcessStep
+            stepNumber={step.step}
+            title={step.title}
+            description={step.description}
+            icon={step.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-12 sm:py-16 lg:py-20 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-stone-800">
+          Why Choose Us
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {differentiators.map((item) => (
+          <div class="bg-white rounded-xl p-6 border border-stone-200 shadow-sm">
+            <h3 class="font-semibold text-stone-800 mb-2">{item.heading}</h3>
+            <p class="text-sm text-stone-600 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Secondary WhatsApp CTA -->
+  <section class="py-12 sm:py-16 bg-wood-700">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-4">
+        Ready to Start Your Project?
+      </h2>
+      <p class="text-stone-200 mb-8 max-w-xl mx-auto">
+        Tell us about your furniture needs and get a free, no-obligation quote today.
+      </p>
+      <WhatsAppCTA
+        message="Hi, I am visiting your website and would like to get a free quote for my furniture project."
+        label="Chat With Us on WhatsApp"
+        variant="primary"
+        size="lg"
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+interface Props {
+  faqs: Array<{ question: string; answer: string }>;
+}
+
+const { faqs } = Astro.props;
+---
+
+<div class="space-y-3" id="faq-accordion">
+  {faqs.map((faq) => (
+    <details class="group border border-stone-200 rounded-lg overflow-hidden">
+      <summary class="flex items-center justify-between gap-4 p-4 cursor-pointer font-medium text-stone-800 min-h-[44px] select-none list-none [&::-webkit-details-marker]:hidden">
+        <span>{faq.question}</span>
+        <svg
+          class="w-5 h-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div class="px-4 pb-4 text-stone-600 leading-relaxed animate-fade-in">
+        {faq.answer}
+      </div>
+    </details>
+  ))}
+</div>
+
+<script>
+  // Single-open accordion behavior: when one item opens, close all others
+  const accordion = document.getElementById('faq-accordion');
+  if (accordion) {
+    const details = accordion.querySelectorAll('details');
+    details.forEach((detail) => {
+      detail.addEventListener('toggle', () => {
+        if (detail.open) {
+          details.forEach((other) => {
+            if (other !== detail && other.open) {
+              other.removeAttribute('open');
+            }
+          });
+        }
+      });
+    });
+  }
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+</style>

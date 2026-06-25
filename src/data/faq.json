@@ -1,0 +1,32 @@
+[
+  {
+    "question": "How much does custom furniture cost?",
+    "answer": "Pricing depends on the size, material, and complexity of the project. Budget-friendly options start around ₹15,000 for simple furniture, while premium solid wood pieces can range from ₹50,000 upwards. Contact us on WhatsApp for a free quote tailored to your requirements.",
+    "topic": "pricing"
+  },
+  {
+    "question": "What materials do you work with?",
+    "answer": "We work with a variety of materials including solid wood (teak, sheesham), plywood (BWR and marine grade), MDF, WPC boards, laminates, and veneers. We help you choose the right material based on your budget, durability needs, and aesthetic preferences.",
+    "topic": "materials"
+  },
+  {
+    "question": "How long does a typical project take?",
+    "answer": "Simple furniture items take 7-14 days, medium complexity projects like wardrobes or TV units take 2-4 weeks, and larger projects like full room interiors can take 4-8 weeks. We provide a clear timeline before starting work.",
+    "topic": "timeline"
+  },
+  {
+    "question": "Which areas in Hyderabad do you serve?",
+    "answer": "We serve all areas within Hyderabad and surrounding regions including Secunderabad, Kukatpally, Miyapur, Gachibowli, Kondapur, Manikonda, Kompally, Medchal, and Shamshabad. We do free site visits within the city.",
+    "topic": "serviceArea"
+  },
+  {
+    "question": "What are your payment terms?",
+    "answer": "We typically follow a 50% advance at order confirmation, 40% at material procurement and mid-project review, and 10% balance on delivery and installation. We accept UPI, bank transfer, and cash payments.",
+    "topic": "payment"
+  },
+  {
+    "question": "Do you offer a warranty on your work?",
+    "answer": "Yes, we provide a 1-year warranty on craftsmanship covering any manufacturing defects. Hardware and fittings carry their own manufacturer warranty. We also offer post-warranty maintenance services at nominal charges.",
+    "topic": "warranty"
+  }
+]

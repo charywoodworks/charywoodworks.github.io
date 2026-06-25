@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3a2718"/>
+      <stop offset="50%" style="stop-color:#523723"/>
+      <stop offset="100%" style="stop-color:#6d4a2f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#woodGrad)"/>
+  <!-- Wood grain texture lines -->
+  <path d="M0 200 Q480 180 960 200 Q1440 220 1920 200" fill="none" stroke="#8B5E3C" stroke-width="1" opacity="0.3"/>
+  <path d="M0 400 Q480 380 960 400 Q1440 420 1920 400" fill="none" stroke="#8B5E3C" stroke-width="1" opacity="0.3"/>
+  <path d="M0 600 Q480 580 960 600 Q1440 620 1920 600" fill="none" stroke="#8B5E3C" stroke-width="1" opacity="0.3"/>
+  <path d="M0 800 Q480 780 960 800 Q1440 820 1920 800" fill="none" stroke="#8B5E3C" stroke-width="1" opacity="0.3"/>
+  <path d="M0 100 Q960 80 1920 100" fill="none" stroke="#d4a373" stroke-width="0.5" opacity="0.2"/>
+  <path d="M0 300 Q960 280 1920 300" fill="none" stroke="#d4a373" stroke-width="0.5" opacity="0.2"/>
+  <path d="M0 500 Q960 480 1920 500" fill="none" stroke="#d4a373" stroke-width="0.5" opacity="0.2"/>
+  <path d="M0 700 Q960 680 1920 700" fill="none" stroke="#d4a373" stroke-width="0.5" opacity="0.2"/>
+  <path d="M0 900 Q960 880 1920 900" fill="none" stroke="#d4a373" stroke-width="0.5" opacity="0.2"/>
+  <!-- Center text -->
+  <text x="960" y="500" text-anchor="middle" font-family="sans-serif" font-size="72" font-weight="bold" fill="#f5e6d3" opacity="0.8">Custom Woodworking</text>
+  <text x="960" y="580" text-anchor="middle" font-family="sans-serif" font-size="36" fill="#d4a373" opacity="0.7">Hero Background — Placeholder</text>
+  <text x="960" y="640" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#e8c9a0" opacity="0.5">1920 × 1080 (16:9)</text>
+</svg>

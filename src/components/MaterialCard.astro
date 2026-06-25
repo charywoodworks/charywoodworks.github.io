@@ -1,0 +1,71 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  budgetTier: 'Budget' | 'Mid-Range' | 'Premium';
+  applicableCategories: string[];
+  isPlaceholder: boolean;
+}
+
+const { name, description, budgetTier, applicableCategories, isPlaceholder } = Astro.props;
+
+import WhatsAppCTA from './WhatsAppCTA.astro';
+
+const tierColors: Record<string, string> = {
+  'Budget': 'bg-green-100 text-green-800',
+  'Mid-Range': 'bg-amber-100 text-amber-800',
+  'Premium': 'bg-wood-100 text-wood-800',
+};
+
+const tierColor = tierColors[budgetTier] || 'bg-stone-100 text-stone-800';
+
+const whatsappMessage = `Hi, I would like to know more about ${name} for my project.`;
+
+// Format category slugs into readable names
+function formatCategory(slug: string): string {
+  return slug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+---
+
+<article class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 flex flex-col hover:shadow-md transition-shadow">
+  {isPlaceholder && (
+    <span class="inline-block self-start bg-amber-100 text-amber-700 text-xs font-medium px-2 py-1 rounded mb-3">
+      Content coming soon
+    </span>
+  )}
+
+  <div class="flex items-start justify-between gap-3 mb-3">
+    <h3 class="font-semibold text-stone-800 text-lg">{name}</h3>
+    <span class:list={['text-xs font-medium px-2.5 py-1 rounded-full whitespace-nowrap', tierColor]}>
+      {budgetTier}
+    </span>
+  </div>
+
+  <p class="text-stone-600 text-sm leading-relaxed mb-4 flex-1">
+    {description}
+  </p>
+
+  {applicableCategories.length > 0 && (
+    <div class="mb-4">
+      <p class="text-xs font-medium text-stone-500 uppercase tracking-wide mb-2">Applicable Categories</p>
+      <div class="flex flex-wrap gap-1.5">
+        {applicableCategories.map((cat) => (
+          <span class="text-xs bg-stone-100 text-stone-600 px-2 py-0.5 rounded">
+            {formatCategory(cat)}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <WhatsAppCTA
+    message={whatsappMessage}
+    label="Enquire About Material"
+    variant="outline"
+    size="sm"
+    fullWidth={true}
+  />
+</article>

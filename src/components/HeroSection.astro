@@ -1,0 +1,28 @@
+---
+import WhatsAppCTA from './WhatsAppCTA.astro';
+import homepageData from '../data/homepage.json';
+
+const { heroHeadline, heroSubheadline, heroCTAText, heroCTAMessage } = homepageData;
+---
+
+<section class="relative bg-gradient-to-br from-wood-800 via-wood-700 to-wood-900 text-white overflow-hidden">
+  <!-- Subtle wood grain texture overlay -->
+  <div class="absolute inset-0 opacity-10 bg-[url('/images/placeholders/wood-grain-pattern.svg')] bg-repeat"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 py-16 sm:py-24 lg:py-32">
+    <div class="max-w-2xl">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-4">
+        {heroHeadline}
+      </h1>
+      <p class="text-base sm:text-lg text-stone-200 mb-8 max-w-xl leading-relaxed">
+        {heroSubheadline}
+      </p>
+      <WhatsAppCTA
+        message={heroCTAMessage}
+        label={heroCTAText}
+        variant="primary"
+        size="lg"
+      />
+    </div>
+  </div>
+</section>

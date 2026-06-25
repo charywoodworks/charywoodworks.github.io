@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import siteData from '../data/site.json';
+
+const services = [
+  {
+    title: "Door Repairs & Alignment",
+    description: "Fix sticking doors, realign hinges, and repair damaged frames to ensure smooth operation and proper sealing.",
+    icon: "🚪",
+  },
+  {
+    title: "Shelf & Cabinet Fixing",
+    description: "Install new shelves, fix sagging cabinets, and secure loose fittings for safe and sturdy storage solutions.",
+    icon: "🗄️",
+  },
+  {
+    title: "Furniture Adjustments & Repairs",
+    description: "Tighten wobbly joints, replace broken parts, and restore functionality to your existing furniture pieces.",
+    icon: "🪑",
+  },
+  {
+    title: "Lock & Handle Fitting",
+    description: "Install or replace door locks, handles, and latches with precision for security and ease of use.",
+    icon: "🔒",
+  },
+  {
+    title: "Minor Woodwork Fixes",
+    description: "Patch scratches, fill gaps, repair chipped edges, and address small wood damage throughout your home.",
+    icon: "🔨",
+  },
+  {
+    title: "Curtain Rod & Bracket Installation",
+    description: "Mount curtain rods, brackets, and blinds securely on any wall type with proper alignment and leveling.",
+    icon: "🪟",
+  },
+];
+
+const serviceAreas = [
+  "Kukatpally",
+  "Miyapur",
+  "Gachibowli",
+  "Madhapur",
+  "Kondapur",
+  "Secunderabad",
+  "Kompally",
+  "Shamshabad",
+  "Begumpet",
+  "Ameerpet",
+];
+
+const whatsappMessage = "Hi, I need a carpenter for [describe your requirement]. My location is [area in Hyderabad].";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Hire a Carpenter in Hyderabad",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": siteData.businessName,
+    "telephone": siteData.phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "addressCountry": "IN",
+    },
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Hyderabad",
+  },
+  "description": "Professional carpenter services for door repairs, furniture fixes, shelf installation, and minor woodwork in Hyderabad. Quick response within 4 hours.",
+  "serviceType": "Carpentry",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Carpenter Services",
+    "itemListElement": services.map((service, index) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Hire a Carpenter in Hyderabad | Quick Fixes & More"
+  description="Hire a skilled carpenter in Hyderabad for door repairs, shelf fixing, furniture adjustments, and minor woodwork. Quick response. Get a quote on WhatsApp."
+  url="/hire-carpenter"
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="bg-wood-50 py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-wood-700 mb-4">
+        Hire a Carpenter in Hyderabad
+      </h1>
+      <p class="text-lg text-stone-600 max-w-2xl mx-auto">
+        Need quick fixes around the house? Our skilled carpenters handle everything from door repairs to furniture adjustments across Hyderabad.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-stone-800 mb-8 text-center">
+        Common Small Works We Handle
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Info Section -->
+  <section class="bg-stone-50 py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-stone-800 mb-8 text-center">
+        How We Work
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Response Time -->
+        <div class="bg-white rounded-xl p-6 border border-stone-200 text-center">
+          <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-stone-800 mb-2">Quick Response</h3>
+          <p class="text-stone-600 text-sm">We respond within 4 hours during business hours</p>
+        </div>
+
+        <!-- Service Area -->
+        <div class="bg-white rounded-xl p-6 border border-stone-200 text-center">
+          <div class="w-14 h-14 bg-wood-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-wood-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-stone-800 mb-2">Service Area</h3>
+          <p class="text-stone-600 text-sm">Serving across Hyderabad including {serviceAreas.slice(0, 5).join(", ")} and more</p>
+        </div>
+
+        <!-- Pricing Model -->
+        <div class="bg-white rounded-xl p-6 border border-stone-200 text-center">
+          <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-stone-800 mb-2">Transparent Pricing</h3>
+          <p class="text-stone-600 text-sm">Pricing shared after requirement discussion</p>
+        </div>
+      </div>
+
+      <!-- Full service area list -->
+      <div class="mt-10 bg-white rounded-xl p-6 border border-stone-200">
+        <h3 class="text-lg font-semibold text-stone-800 mb-4">Areas We Cover in Hyderabad</h3>
+        <div class="flex flex-wrap gap-2">
+          {serviceAreas.map((area) => (
+            <span class="inline-block bg-stone-100 text-stone-700 text-sm px-3 py-1 rounded-full">
+              {area}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp CTA Section -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-stone-800 mb-4">
+        Ready to Book a Carpenter?
+      </h2>
+      <p class="text-stone-600 mb-8">
+        Tell us what you need and your location. We'll get back to you with availability and pricing.
+      </p>
+      <WhatsAppCTA
+        message={whatsappMessage}
+        label="Hire a Carpenter on WhatsApp"
+        variant="primary"
+        size="lg"
+      />
+    </div>
+  </section>
+</BaseLayout>

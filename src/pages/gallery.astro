@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GalleryFilter from '../components/GalleryFilter.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import { getCollection } from 'astro:content';
+import siteData from '../data/site.json';
+
+const galleryEntries = await getCollection('gallery');
+
+// Extract unique categories from gallery entries
+const categories = [...new Set(galleryEntries.map((entry) => entry.data.category))];
+
+// Generate Product schema for each gallery project
+const productSchemas = galleryEntries.map((entry) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": entry.data.title,
+  "description": `${entry.data.materialType} ${entry.data.category} - ${entry.data.dimensions}`,
+  "image": entry.data.image,
+  "manufacturer": {
+    "@type": "LocalBusiness",
+    "name": siteData.businessName,
+  },
+}));
+---
+
+<BaseLayout
+  title="Gallery - Custom Woodwork Projects Hyderabad"
+  description="Browse our portfolio of custom woodworking projects in Hyderabad including beds, wardrobes, TV units, and more."
+  url="/gallery"
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchemas)} />
+  </Fragment>
+
+  <section class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-stone-800 mb-4">
+        Our Work Gallery
+      </h1>
+      <p class="text-stone-600 mb-8 max-w-2xl">
+        Browse our portfolio of custom woodworking projects delivered across Hyderabad. Filter by category to find inspiration for your project.
+      </p>
+
+      <!-- Gallery Filter -->
+      <GalleryFilter categories={categories} />
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+        {galleryEntries.map((entry) => (
+          <div data-category={entry.data.category}>
+            <ProjectCard
+              title={entry.data.title}
+              image={entry.data.image}
+              imageAlt={entry.data.imageAlt}
+              isPlaceholder={entry.data.isPlaceholder}
+              materialType={entry.data.materialType}
+              dimensions={entry.data.dimensions}
+              finishType={entry.data.finishType}
+              location={entry.data.location}
+              category={entry.data.category}
+              whatsappMessage={entry.data.whatsappMessage}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty State -->
+      <div id="gallery-empty" class="hidden text-center py-16">
+        <p class="text-stone-500 text-lg mb-4">
+          No projects available for this category yet.
+        </p>
+        <p class="text-stone-500 mb-6">
+          We can still help you with your project. Get in touch to discuss your requirements.
+        </p>
+        <WhatsAppCTA
+          message="Hi, I am looking at your gallery and would like to enquire about a project category that doesn't have examples yet. Can you share more details?"
+          label="Enquire on WhatsApp"
+          variant="primary"
+          size="md"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

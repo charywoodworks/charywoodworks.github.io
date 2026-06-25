@@ -1,0 +1,13 @@
+{
+  "menuItems": [
+    { "label": "Home", "href": "/" },
+    { "label": "Products", "href": "/products" },
+    { "label": "Gallery", "href": "/gallery" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Hire a Carpenter", "href": "/hire-carpenter" },
+    { "label": "Reviews", "href": "/reviews" },
+    { "label": "About", "href": "/about" },
+    { "label": "FAQ", "href": "/faq" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}

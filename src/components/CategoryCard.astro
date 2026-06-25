@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  shortDescription: string;
+  image: string;
+  imageAlt: string;
+  isPlaceholder: boolean;
+}
+
+const { title, slug, shortDescription, image, imageAlt, isPlaceholder } = Astro.props;
+---
+
+<a
+  href={`/products/${slug}`}
+  class="group block bg-white rounded-xl shadow-sm overflow-hidden border border-stone-200 hover:shadow-md transition-shadow"
+>
+  <div class="relative aspect-square">
+    <img
+      src={image}
+      alt={imageAlt}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      loading="lazy"
+      decoding="async"
+      width="600"
+      height="600"
+    />
+    {isPlaceholder && (
+      <span class="absolute top-2 left-2 bg-amber-500 text-white text-xs px-2 py-1 rounded font-medium">
+        Placeholder
+      </span>
+    )}
+  </div>
+  <div class="p-4">
+    <h3 class="font-semibold text-stone-800 text-lg group-hover:text-amber-700 transition-colors">
+      {title}
+    </h3>
+    <p class="mt-1 text-sm text-stone-600 line-clamp-2">{shortDescription}</p>
+  </div>
+</a>

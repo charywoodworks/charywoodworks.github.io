@@ -1,0 +1,68 @@
+[
+  {
+    "step": 1,
+    "title": "Enquiry",
+    "description": "Reach out to us via WhatsApp or phone. Tell us about your project idea, requirements, and any reference images you have in mind.",
+    "icon": "message-circle"
+  },
+  {
+    "step": 2,
+    "title": "Requirement Understanding",
+    "description": "We discuss your needs in detail — dimensions, style preferences, material choices, budget range, and timeline expectations.",
+    "icon": "clipboard-list"
+  },
+  {
+    "step": 3,
+    "title": "Site Visit",
+    "description": "Our team visits your location to take measurements, assess the space, and understand any structural or design constraints.",
+    "icon": "map-pin"
+  },
+  {
+    "step": 4,
+    "title": "Plan Discussion",
+    "description": "We present design options and layout plans based on your requirements and site conditions. Revisions are welcome at this stage.",
+    "icon": "layout"
+  },
+  {
+    "step": 5,
+    "title": "Material Selection",
+    "description": "Choose from our range of materials — solid wood, plywood, MDF, WPC, laminates, or veneers — with guidance on durability and budget.",
+    "icon": "layers"
+  },
+  {
+    "step": 6,
+    "title": "Quotation",
+    "description": "Receive a detailed quotation covering material costs, labour charges, hardware, and finishing. No hidden charges — everything is transparent.",
+    "icon": "file-text"
+  },
+  {
+    "step": 7,
+    "title": "Contract & Advance",
+    "description": "Once you approve the quote, we finalize the agreement and collect the initial advance payment to begin procurement.",
+    "icon": "handshake"
+  },
+  {
+    "step": 8,
+    "title": "Timeline Planning",
+    "description": "We provide a clear project timeline with milestones so you know exactly when each phase will be completed.",
+    "icon": "calendar"
+  },
+  {
+    "step": 9,
+    "title": "Execution & Updates",
+    "description": "Work begins at our workshop. We send regular progress photos and updates via WhatsApp so you stay informed throughout.",
+    "icon": "hammer"
+  },
+  {
+    "step": 10,
+    "title": "Delivery & Installation",
+    "description": "Finished items are delivered and professionally installed at your location. We ensure everything fits perfectly and functions smoothly.",
+    "icon": "truck"
+  },
+  {
+    "step": 11,
+    "title": "Feedback & Support",
+    "description": "After installation, we follow up to ensure you are satisfied. Our warranty covers craftsmanship, and we are always a message away for support.",
+    "icon": "thumbs-up"
+  }
+]

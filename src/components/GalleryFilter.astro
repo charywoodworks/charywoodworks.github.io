@@ -1,0 +1,63 @@
+---
+interface Props {
+  categories: string[];
+}
+const { categories } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-2 mb-8" id="gallery-filters" role="tablist">
+  <button
+    class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-amber-800 text-white min-h-[44px]"
+    data-filter="all"
+    role="tab"
+    aria-selected="true"
+  >
+    All
+  </button>
+  {categories.map((cat) => (
+    <button
+      class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 min-h-[44px]"
+      data-filter={cat}
+      role="tab"
+      aria-selected="false"
+    >
+      {cat.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+    </button>
+  ))}
+</div>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('[data-category]');
+  const emptyState = document.getElementById('gallery-empty');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.filter;
+
+      // Update button styling and aria states
+      filterBtns.forEach((b) => {
+        b.classList.remove('bg-amber-800', 'text-white');
+        b.classList.add('bg-stone-100', 'text-stone-700');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('bg-amber-800', 'text-white');
+      btn.classList.remove('bg-stone-100', 'text-stone-700');
+      btn.setAttribute('aria-selected', 'true');
+
+      // Filter gallery items
+      let visibleCount = 0;
+      galleryItems.forEach((item) => {
+        const el = item as HTMLElement;
+        const show = filter === 'all' || el.dataset.category === filter;
+        el.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      // Toggle empty state
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? '' : 'none';
+      }
+    });
+  });
+</script>

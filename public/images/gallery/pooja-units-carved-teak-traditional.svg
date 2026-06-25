@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f5e6d3"/>
+  <rect x="280" y="160" width="240" height="320" rx="4" fill="#d4a373" stroke="#8B5E3C" stroke-width="3"/>
+  <path d="M280 160 L400 90 L520 160" fill="#8B5E3C" stroke="#6d4a2f" stroke-width="2"/>
+  <circle cx="400" cy="130" r="12" fill="#6d4a2f"/>
+  <rect x="310" y="200" width="180" height="80" rx="4" fill="#e8c9a0" stroke="#6d4a2f" stroke-width="1"/>
+  <line x1="400" y1="200" x2="400" y2="280" stroke="#6d4a2f" stroke-width="1"/>
+  <rect x="310" y="310" width="180" height="80" rx="4" fill="#e8c9a0" stroke="#6d4a2f" stroke-width="1"/>
+  <rect x="300" y="420" width="200" height="60" rx="4" fill="#6d4a2f"/>
+  <path d="M340 160 L340 90" stroke="#8B5E3C" stroke-width="4"/>
+  <path d="M460 160 L460 90" stroke="#8B5E3C" stroke-width="4"/>
+  <text x="400" y="530" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#8B5E3C">Carved Pooja Mandir</text>
+  <text x="400" y="570" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#6d4a2f">Gallery Placeholder</text>
+</svg>
